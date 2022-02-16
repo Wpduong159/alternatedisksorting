@@ -6,7 +6,6 @@
 
 
 # Make some evenly-sized list with 2 distinct alternating characters [i.e. 01010101]
-# ['L', 'D', 'L', 'D', 'L', 'D', 'L', 'D']
 disks1 = []
 benchmark = []
 
@@ -24,6 +23,7 @@ def right():
 	"""Traverse from left to right"""
 	last = None
 	for x in range(len(disks1)):
+		# Check every 2 disks and swap if disk is dark and previous disk is light
 		if disks1[x] == 'D' and last == 'L':
 			disks1[x] = 'L'
 			disks1[x-1] = 'D'
@@ -33,6 +33,7 @@ def right():
 if __name__ == "__main__":
 	"""Main function"""
 
+	# Choose n for n light disks and n dark disks
 	n = 5
 
 	makeLists(n)
