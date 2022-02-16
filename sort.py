@@ -4,39 +4,41 @@
 # CPSC 335-01
 # 14 February 2022
 
-def disksSorted():
-	"""Checks to see if light disks are to the left \
-	   and dark disks are to the right"""
-	benchmark = [0, 0, 0, 0, 1, 1, 1, 1]
-
-	return True if disks2 == benchmark else False
-
-
-
-def swap(x, y):
-	"""Swaps two given elements in a list"""
-	disks2[x], disks2[y] = disks2[y], disks2[x]
-
-
 
 # Make some evenly-sized list with 2 distinct alternating characters [i.e. 01010101]
-disks1 = [0, 1, 0, 1, 0, 1, 0, 1]
-disks2 = [0, 1, 0, 1, 0, 1, 0, 1]
+# ['L', 'D', 'L', 'D', 'L', 'D', 'L', 'D']
+disks1 = []
+benchmark = []
 
+
+def makeLists(n):
+	"""Generate the unsorted and sorted list"""
+	for i in range(n):
+		disks1.extend(['L', 'D'])
+		benchmark.append('D')
+	for i in range(n):
+		benchmark.append('L')
+
+
+def right():
+	"""Traverse from left to right"""
+	last = None
+	for x in range(len(disks1)):
+		if disks1[x] == 'D' and last == 'L':
+			disks1[x] = 'L'
+			disks1[x-1] = 'D'
+		last = disks1[x]
 
 
 if __name__ == "__main__":
 	"""Main function"""
 
-	condition = False
+	n = 5
 
-	while (condition == False):
-		for x in range(len(disks1)):
-			print(disks2)
-			if (disks1[x] == 0 and disks1[x+1] == 1):
-				swap(x, x+1)
-			else:
-				pass
-		condition = disksSorted()
+	makeLists(n)
 
-print(disks2)
+	print(disks1)
+
+	while disks1 != benchmark:
+		right()
+		print(disks1)
