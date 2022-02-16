@@ -4,6 +4,7 @@
 # CPSC 335-01
 # 14 February 2022
 
+# Code for sorting alternating light and dark disks
 
 # Make some evenly-sized list with 2 distinct alternating characters [i.e. 01010101]
 disks1 = []
