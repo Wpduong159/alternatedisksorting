@@ -10,6 +10,8 @@
 disks1 = []
 benchmark = []
 
+moveCounter = 0
+
 
 def makeLists(n):
 	"""Generate the unsorted and sorted list"""
@@ -22,12 +24,16 @@ def makeLists(n):
 
 def right():
 	"""Traverse from left to right"""
+	global moveCounter
+
 	last = None
 	for x in range(len(disks1)):
 		# Check every 2 disks and swap if disk is dark and previous disk is light
 		if disks1[x] == 'D' and last == 'L':
 			disks1[x] = 'L'
 			disks1[x-1] = 'D'
+
+			moveCounter += 1
 		last = disks1[x]
 
 
@@ -37,6 +43,7 @@ if __name__ == "__main__":
 	# Choose n for n light disks and n dark disks
 	n = 5
 
+
 	makeLists(n)
 
 	print(disks1)
@@ -44,3 +51,5 @@ if __name__ == "__main__":
 	while disks1 != benchmark:
 		right()
 		print(disks1)
+
+	print("Number of moves: {}".format(moveCounter))
